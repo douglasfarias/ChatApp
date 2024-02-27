@@ -1,24 +1,30 @@
+import Layout from "@/components/layout";
+
 const Loading = () => {
 	return (
-		<div className="flex flex-col justify-center items-center h-full w-full">
-			<svg
-				className="animate-spin size-12 text-white"
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24">
-				<circle
-					className="opacity-25"
-					cx="12"
-					cy="12"
-					r="10"
-					stroke="currentColor"
-					strokeWidth="4"></circle>
-				<path
-					className="opacity-75"
-					fill="currentColor"
-					d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-			</svg>
-		</div>
+		<Layout>
+			<main className="flex flex-col col-span-8">
+				<div className="basis-1/12 flex flex-row w-full gap-3 items-center animate-pulse">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						strokeWidth={1.5}
+						stroke="currentColor"
+						className="w-10 h-10 bg-slate-500 rounded-full p-2 animate-pulse">
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+						/>
+					</svg>
+				</div>
+				<div className="basis-8/12 bg-slate-500 rounded mb-4 animate-pulse"></div>
+				<div className="basis-3/12 animate-pulse flex-nowrap">
+					<div className="basis-11/12 w-full rounded size-10 bg-slate-500 animate-pulse"></div>
+				</div>
+			</main>
+		</Layout>
 	);
 };
 
