@@ -1,38 +1,30 @@
-import localFont from "next/font/local";
+"use client";
 
-import AuthService from "@/services/auth-service";
+import localFont from "next/font/local";
+import { onSubmit } from "./actions";
 import Link from "next/link";
-import { redirect, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import { cookies } from "next/headers";
 import PublicLayout from "@/components/public-layout";
+import { useFormState } from "react-dom";
 
 const kode = localFont({
 	src: "../../../public/font/KodeMono-VariableFont_wght.ttf",
 });
 
 const Page = () => {
-	async function onSubmit(formData: FormData) {
-		"use server";
-
-		const email = formData.get("email") as string;
-		const password = formData.get("password") as string;
-		const response = await AuthService.login(email, password);
-		cookies().set({
-			name: "Chat.Api",
-			value: response.accessToken,
-			maxAge: response.expiresIn,
-		});
-
-		redirect("/");
-	}
+	const [state, formAction] = useFormState(onSubmit, {} as { message: string });
 
 	return (
 		<PublicLayout>
 			<div className="col-span-12 flex flex-col items-center justify-center h-screen w-full">
 				<p className={`text-4xl font-bold mb-10 ${kode.className}`}>NextChat</p>
-				<form action={onSubmit}>
+				<form action={formAction}>
 					<legend className="text-xl my-3 font-bold">Entrar</legend>
+					{state?.message && (
+						<div className="bg-red-500 text-white p-3 rounded my-3">
+							{state.message}
+						</div>
+					)}
 					<fieldset>
 						<div className="my-3">
 							<label>Email</label>
