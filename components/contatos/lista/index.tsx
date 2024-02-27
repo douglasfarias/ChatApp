@@ -7,7 +7,7 @@ export default async function ListaDeConversas() {
 
 	return (
 		<>
-			<p className="font-bold text-xl ml-3">Conversas</p>
+			<p className="font-bold text-xl">Conversas</p>
 			<ul>
 				{contatos.map((contato) => (
 					<ListaDeConversasItem key={contato.id} model={contato} />

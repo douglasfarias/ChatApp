@@ -21,7 +21,7 @@ const Header = () => {
 	}
 
 	return (
-		<div className="basis-full flex flex-row justify-between items-center m-3 p-3">
+		<div className="basis-full flex flex-row justify-between items-center my-3 py-3">
 			<p className={`text-2xl font-bold ${kode.className}`}>NextChat</p>
 			<form action={logout}>
 				<button
