@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 type State = {
-	message: string;
+	message?: string;
 };
 
 type Props = {
@@ -12,7 +12,6 @@ type Props = {
 const LoginForm = ({ onSubmit, state }: Props) => {
 	return (
 		<form id="loginForm" action={onSubmit}>
-			<legend className="text-xl my-3 font-bold">Entrar</legend>
 			{state?.message && (
 				<div className="bg-red-500 text-white p-3 rounded my-3">{state.message}</div>
 			)}
@@ -43,7 +42,7 @@ const LoginForm = ({ onSubmit, state }: Props) => {
 						className="bg-slate-600 ring ring-slate-600 rounded p-2 text-sm flex flex-row items-center gap-1">
 						Entrar
 					</button>
-					<Link href="/">Cadastrar-se</Link>
+					<Link href="/account/register">Cadastrar-se</Link>
 				</div>
 			</fieldset>
 		</form>
