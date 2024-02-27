@@ -18,7 +18,8 @@ const Page = () => {
 	return (
 		<PublicLayout>
 			<div className="col-span-12 flex flex-col items-center justify-center h-screen w-full">
-				<p className={`text-4xl font-bold mb-10 ${kode.className}`}>NextChat</p>
+				<p className={`text-4xl font-bold ${kode.className}`}>NextChat</p>
+				<p className={`text-sm font-bold ${kode.className}`}>your next chat app</p>
 				<p className="text-xl my-3 font-bold">Cadastrar-se</p>
 				<RegisterForm state={state} onSubmit={formAction} />
 			</div>
