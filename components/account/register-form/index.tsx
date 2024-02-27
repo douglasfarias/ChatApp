@@ -52,6 +52,7 @@ const RegisterForm = ({ onSubmit, state }: Props) => {
 						className="bg-slate-600 ring ring-slate-600 rounded p-2 text-sm flex flex-row items-center gap-1">
 						Cadastrar
 					</button>
+					<Link href="/account/login">Entrar</Link>
 				</div>
 			</fieldset>
 		</form>
