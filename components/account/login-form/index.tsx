@@ -1,4 +1,7 @@
+import Spinner from "@/components/spinner";
+import SubmitButton from "@/components/submit-button";
 import Link from "next/link";
+import { useFormStatus } from "react-dom";
 
 type State = {
 	message?: string;
@@ -37,11 +40,7 @@ const LoginForm = ({ onSubmit, state }: Props) => {
 					/>
 				</div>
 				<div className="my-6 flex justify-between items-center">
-					<button
-						type="submit"
-						className="bg-slate-600 ring ring-slate-600 rounded p-2 text-sm flex flex-row items-center gap-1">
-						Entrar
-					</button>
+					<SubmitButton />
 					<Link href="/account/register">Cadastrar-se</Link>
 				</div>
 			</fieldset>

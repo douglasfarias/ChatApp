@@ -1,3 +1,4 @@
+import SubmitButton from "@/components/submit-button";
 import Link from "next/link";
 
 type State = {
@@ -47,11 +48,7 @@ const RegisterForm = ({ onSubmit, state }: Props) => {
 					/>
 				</div>
 				<div className="my-6 flex justify-between items-center">
-					<button
-						type="submit"
-						className="bg-slate-600 ring ring-slate-600 rounded p-2 text-sm flex flex-row items-center gap-1">
-						Cadastrar
-					</button>
+					<SubmitButton />
 					<Link href="/account/login">Entrar</Link>
 				</div>
 			</fieldset>
