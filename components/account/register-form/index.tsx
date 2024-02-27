@@ -38,7 +38,7 @@ const RegisterForm = ({ onSubmit, state }: Props) => {
 					/>
 				</div>
 				<div className="my-3">
-					<label>Confirmar Senha</label>
+					<label>Repetir Senha</label>
 					<input
 						id="confirmPassword"
 						name="confirmPassword"
