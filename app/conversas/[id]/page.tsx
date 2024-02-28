@@ -1,10 +1,10 @@
 import Layout from "@/components/layout";
-import ConversasService from "@/services/conversas-service";
-import MensagensService from "@/services/mensagens-service";
+import useConversas from "@/hooks/conversa";
+import useMensagens from "@/hooks/mensagens";
 
 export default async function Page({ params }: { params: { id: string } }) {
-	const model = await ConversasService.getById(params.id);
-	model.mensagens = await MensagensService.getByConversaId(params.id);
+	const conversas = useConversas();
+	const mensagens = useMensagens();
 
 	return (
 		<Layout>
@@ -23,11 +23,11 @@ export default async function Page({ params }: { params: { id: string } }) {
 							d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
 						/>
 					</svg>
-					<p>{model.titulo}</p>
+					<p>{(await conversas.getById(params.id)).titulo}</p>
 				</div>
 				<div className="basis-8/12 bg-slate-500 rounded mb-4">
 					<ul className="p-4">
-						{model.mensagens?.map((mensagem) => (
+						{(await mensagens.getByConversaId(params.id))?.map((mensagem) => (
 							<li key={mensagem.id} className="flex flex-row gap-4 ">
 								<div className="max-w-96 bg-slate-600 ring ring-slate-600 rounded-b-xl rounded-r-xl p-2">
 									<p>{mensagem.texto}</p>

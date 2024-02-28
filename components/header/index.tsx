@@ -1,25 +1,12 @@
 import React from "react";
 import localFont from "next/font/local";
-import AuthService from "@/services/auth-service";
-import { redirect, useSearchParams } from "next/navigation";
-import { cookies } from "next/headers";
+import { logout } from "./actions";
 
 const kode = localFont({
 	src: "../../public/font/KodeMono-VariableFont_wght.ttf",
 });
 
 const Header = () => {
-	async function logout() {
-		"use server";
-
-		cookies().set({
-			name: "Chat.Api",
-			value: "",
-			maxAge: 0,
-		});
-		redirect("/");
-	}
-
 	return (
 		<div className="basis-full flex flex-row justify-between items-center my-3 py-3">
 			<p className={`text-2xl font-bold ${kode.className}`}>NextChat</p>

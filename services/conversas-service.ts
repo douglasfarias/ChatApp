@@ -1,30 +1,37 @@
 import IConversa from "@/models/conversa";
-import axios from "axios";
+import { AxiosInstance } from "axios";
 
-const BASE_URL = `${process.env.API}/api/conversas`;
 class ConversasService {
-	public static async getAll(): Promise<IConversa[]> {
-		const response = await axios.get<IConversa[]>(BASE_URL);
+	private httpClient: AxiosInstance;
+	constructor(httpClient: AxiosInstance) {
+		this.httpClient = httpClient;
+	}
+
+	public async getAll(): Promise<IConversa[]> {
+		const response = await this.httpClient.get<IConversa[]>(`/api/conversas`);
 		return response.data;
 	}
 
-	public static async getById(id: string): Promise<IConversa> {
-		const response = await axios.get<IConversa>(`${BASE_URL}/${id}`);
+	public async getById(id: string): Promise<IConversa> {
+		const response = await this.httpClient.get<IConversa>(`${`/api/conversas`}/${id}`);
 		return response.data;
 	}
 
-	public static async create(conversa: IConversa): Promise<IConversa> {
-		const response = await axios.post<IConversa>(BASE_URL, conversa);
+	public async create(conversa: IConversa): Promise<IConversa> {
+		const response = await this.httpClient.post<IConversa>(`/api/conversas`, conversa);
 		return response.data;
 	}
 
-	public static async update(id: string, conversa: IConversa): Promise<IConversa> {
-		const response = await axios.put<IConversa>(`${BASE_URL}/${id}`, conversa);
+	public async update(id: string, conversa: IConversa): Promise<IConversa> {
+		const response = await this.httpClient.put<IConversa>(
+			`${`/api/conversas`}/${id}`,
+			conversa
+		);
 		return response.data;
 	}
 
-	public static async delete(id: string): Promise<void> {
-		await axios.delete(`${BASE_URL}/${id}`);
+	public async delete(id: string): Promise<void> {
+		await this.httpClient.delete(`${`/api/conversas`}/${id}`);
 	}
 }
 

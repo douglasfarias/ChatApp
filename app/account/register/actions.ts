@@ -1,5 +1,6 @@
 "use server";
 
+import HttpClient from "@/data/http-client";
 import ProblemDetails from "@/models/problem-details";
 import AuthService from "@/services/auth-service";
 import { AxiosError } from "axios";
@@ -15,7 +16,8 @@ export async function register(prevState: any, formData: FormData) {
 	}
 
 	try {
-		await AuthService.register(email, password);
+		const httpClient = HttpClient.getInstance();
+		await new AuthService(httpClient).register(email, password);
 	} catch (error) {
 		return { message: (error as AxiosError<ProblemDetails>).response?.data.title };
 	}

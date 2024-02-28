@@ -1,9 +1,10 @@
 import ConversasService from "@/services/conversas-service";
 import ListaDeConversasItem from "../item";
-import ContatoService from "@/services/contatos-service";
+import useHttpClient from "@/hooks/http-client";
 
 export default async function ListaDeConversas() {
-	const contatos = await ConversasService.getAll();
+	const httpClient = useHttpClient();
+	const contatos = await new ConversasService(httpClient).getAll();
 
 	return (
 		<>

@@ -6,7 +6,6 @@ import React, { useState } from "react";
 import PublicLayout from "@/components/public-layout";
 import { useFormState, useFormStatus } from "react-dom";
 import LoginForm from "@/components/account/login-form";
-import Spinner from "@/components/spinner";
 
 const kode = localFont({
 	src: "../../../public/font/KodeMono-VariableFont_wght.ttf",

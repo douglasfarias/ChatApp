@@ -1,30 +1,34 @@
 import IContato from "@/models/contato";
-import axios from "axios";
+import { AxiosInstance } from "axios";
 
-const BASE_URL = `${process.env.API}/api/contatos`;
 class ContatoService {
-	public static async getAll(): Promise<IContato[]> {
-		const response = await axios.get(BASE_URL);
+	private httpClient: AxiosInstance;
+	constructor(httpClient: AxiosInstance) {
+		this.httpClient = httpClient;
+	}
+
+	public async getAll(): Promise<IContato[]> {
+		const response = await this.httpClient.get(`/api/contatos`);
 		return response.data;
 	}
 
-	public static async getById(id: string): Promise<IContato> {
-		const response = await axios.get(`${BASE_URL}/${id}`);
+	public async getById(id: string): Promise<IContato> {
+		const response = await this.httpClient.get(`${`/api/contatos`}/${id}`);
 		return response.data;
 	}
 
-	public static async create(contato: IContato): Promise<IContato> {
-		const response = await axios.post(BASE_URL, contato);
+	public async create(contato: IContato): Promise<IContato> {
+		const response = await this.httpClient.post(`/api/contatos`, contato);
 		return response.data;
 	}
 
-	public static async update(contato: IContato): Promise<IContato> {
-		const response = await axios.put(`${BASE_URL}/${contato.id}`, contato);
+	public async update(contato: IContato): Promise<IContato> {
+		const response = await this.httpClient.put(`${`/api/contatos`}/${contato.id}`, contato);
 		return response.data;
 	}
 
-	public static async delete(id: string): Promise<void> {
-		await axios.delete(`${BASE_URL}/${id}`);
+	public async delete(id: string): Promise<void> {
+		await this.httpClient.delete(`${`/api/contatos`}/${id}`);
 	}
 }
 
