@@ -10,7 +10,6 @@ class HttpClient {
 				baseURL: process.env.API,
 				headers: {
 					common: {
-						"Content-Type": "application/json",
 						Authorization: `Bearer ${accessToken}`,
 					},
 				},
