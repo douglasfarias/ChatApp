@@ -1,16 +1,14 @@
-import ConversasService from "@/services/conversas-service";
 import ListaDeConversasItem from "../item";
-import useHttpClient from "@/hooks/http-client";
+import useConversas from "@/hooks/conversa";
 
 export default async function ListaDeConversas() {
-	const httpClient = useHttpClient();
-	const contatos = await new ConversasService(httpClient).getAll();
+	const conversas = useConversas();
 
 	return (
 		<>
 			<p className="font-bold text-xl">Conversas</p>
 			<ul>
-				{contatos.map((contato) => (
+				{(await conversas.getAll()).map((contato) => (
 					<ListaDeConversasItem key={contato.id} model={contato} />
 				))}
 			</ul>
