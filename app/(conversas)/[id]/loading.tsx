@@ -1,6 +1,6 @@
 const Loading = () => {
 	return (
-		<main className="flex flex-col col-span-8">
+		<>
 			<div className="basis-1/12 flex flex-row w-full gap-3 items-center animate-pulse">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ const Loading = () => {
 			<div className="basis-3/12 animate-pulse flex-nowrap">
 				<div className="basis-11/12 w-full rounded size-10 bg-slate-500 animate-pulse"></div>
 			</div>
-		</main>
+		</>
 	);
 };
 
