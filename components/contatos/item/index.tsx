@@ -7,12 +7,12 @@ import { usePathname } from "next/navigation";
 export default function ListaDeConversasItem({ model }: { model: IConversa }) {
 	const pathname = usePathname();
 
-	const active = pathname === `/conversas/${model.id}` ? "bg-slate-600" : "hover:bg-slate-600";
+	const active = pathname === `/${model.id}` ? "bg-slate-600" : "hover:bg-slate-600";
 
 	return (
 		<li className="flex w-80">
 			<Link
-				href={`/conversas/${model.id}`}
+				href={`/${model.id}`}
 				className={`flex flex-row w-full gap-3 p-3 items-center ${active} rounded`}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

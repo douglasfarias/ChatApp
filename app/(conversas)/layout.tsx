@@ -1,6 +1,6 @@
+import Header from "@/components/header";
+import Navbar from "@/components/navbar";
 import React, { PropsWithChildren } from "react";
-import Header from "../header";
-import Navbar from "../navbar";
 
 const Layout = ({ children }: PropsWithChildren) => {
 	return (
@@ -8,7 +8,7 @@ const Layout = ({ children }: PropsWithChildren) => {
 			<Header />
 			<div className="grid grid-cols-12 gap-4 h-full">
 				<Navbar />
-				{children}
+				<main className="flex flex-col col-span-8">{children}</main>
 			</div>
 		</>
 	);
