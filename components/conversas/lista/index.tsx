@@ -1,11 +1,27 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../lib/hooks";
 import ListaDeConversasItem from "../item";
 import Avatar from "@/components/avatar";
+import IConversa from "@/models/conversa";
+import HttpClient from "@/data/http-client";
+import ConversasService from "@/services/conversas-service";
 
 export default function ListaDeConversas() {
-	const conversas = useAppSelector((state) => state.conversas.value);
+	const { user, isAuthenticated } = useAppSelector((state) => state.auth);
+	const [conversas, setConversas] = useState<IConversa[]>();
+	useEffect(() => {
+		async function getConversas() {
+			const http = HttpClient.getInstance(user?.token);
+			setConversas(await new ConversasService(http).getAll());
+		}
+
+		if (isAuthenticated) {
+			getConversas();
+		}
+	}, [isAuthenticated, user?.token]);
+
 	return (
 		<>
 			<p className="font-bold text-xl">Conversas</p>

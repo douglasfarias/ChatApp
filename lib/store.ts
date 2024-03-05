@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import conversasReducer from "./features/conversa/conversa-slice";
 import authReducer from "./features/auth/auth-slice";
 export const makeStore = () => {
 	return configureStore({
 		reducer: {
 			auth: authReducer,
-			conversas: conversasReducer,
 		},
 	});
 };
