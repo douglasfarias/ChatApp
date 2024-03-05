@@ -6,6 +6,8 @@ import { makeStore, AppStore } from "../../lib/store";
 import { initializeConversas } from "@/lib/features/conversa/conversa-slice";
 import ConversasService from "@/services/conversas-service";
 import HttpClient from "@/data/http-client";
+import IUsuario from "@/models/usuario";
+import { login } from "@/lib/features/auth/auth-slice";
 
 function StoreProvider({
 	token,
@@ -25,6 +27,8 @@ function StoreProvider({
 			if (storeRef.current === null || token === undefined) {
 				return;
 			}
+
+			storeRef.current!.dispatch(login({ token: token } as IUsuario));
 
 			const http = HttpClient.getInstance(token!);
 			const conversas = await new ConversasService(http).getAll();

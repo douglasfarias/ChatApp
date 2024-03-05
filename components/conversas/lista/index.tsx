@@ -1,6 +1,5 @@
 "use client";
 
-import Spinner from "@/components/spinner";
 import { useAppSelector } from "../../../lib/hooks";
 import ListaDeConversasItem from "../item";
 import Avatar from "@/components/avatar";
