@@ -1,4 +1,4 @@
-import ListaDeConversas from "../contatos/lista";
+import ListaDeConversas from "../conversas/lista";
 
 export default function Navbar() {
 	return (

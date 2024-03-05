@@ -7,7 +7,7 @@ class HttpClient {
 	public static getInstance(accessToken?: string): AxiosInstance {
 		if (!HttpClient.axios) {
 			HttpClient.axios = axios.create({
-				baseURL: process.env.API,
+				baseURL: process.env.NEXT_PUBLIC_API,
 				headers: {
 					common: {
 						Authorization: `Bearer ${accessToken}`,

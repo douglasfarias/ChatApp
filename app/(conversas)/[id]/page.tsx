@@ -1,26 +1,21 @@
 import Avatar from "@/components/avatar";
-import useConversas from "@/hooks/conversa";
-import useMensagens from "@/hooks/mensagens";
 
 export default async function Page({ params }: { params: { id: string } }) {
-	const conversas = useConversas();
-	const mensagens = useMensagens();
-
 	return (
 		<>
 			<div className="basis-1/12 flex flex-row w-full gap-3 items-center">
 				<Avatar />
-				<p>{(await conversas.getById(params.id)).titulo}</p>
+				{/* <p>{(await conversas.getById(params.id)).titulo}</p> */}
 			</div>
 			<div className="basis-8/12 bg-slate-500 rounded mb-4">
 				<ul className="p-4">
-					{(await mensagens.getByConversaId(params.id))?.map((mensagem) => (
+					{/* {(await mensagens.getByConversaId(params.id))?.map((mensagem) => (
 						<li key={mensagem.id} className="flex flex-row gap-4 ">
 							<div className="max-w-96 bg-slate-600 ring ring-slate-600 rounded-b-xl rounded-r-xl p-2">
 								<p>{mensagem.texto}</p>
 							</div>
 						</li>
-					))}
+					))} */}
 				</ul>
 			</div>
 			<div className="basis-3/12">
