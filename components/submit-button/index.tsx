@@ -1,7 +1,8 @@
 import { useFormStatus } from "react-dom";
 import Spinner from "../spinner";
+import { PropsWithChildren } from "react";
 
-const SubmitButton = () => {
+const SubmitButton = ({ children }: PropsWithChildren) => {
 	const { pending } = useFormStatus();
 	return (
 		<button
@@ -9,7 +10,7 @@ const SubmitButton = () => {
 			disabled={pending}
 			className="bg-slate-600 hover:bg-slate-700 active:bg-slate-800 disabled:bg-slate-900 ring ring-slate-600 rounded p-2 text-sm flex flex-row items-center gap-1">
 			Enviar
-			<Spinner visible={pending} />
+			{pending ? <Spinner visible={pending} /> : children}
 		</button>
 	);
 };

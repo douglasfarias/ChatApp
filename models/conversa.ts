@@ -1,11 +1,7 @@
-import IContato from "./contato";
-import IMensagem from "./mensagem";
-
 export default interface IConversa {
 	id: string;
-	contato: IContato;
+	contatoId: string;
 	titulo: string;
-	mensagens: IMensagem[];
 	dataCriacao: Date;
 	dataAtualizacao: Date;
 }

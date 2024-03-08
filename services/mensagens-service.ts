@@ -1,3 +1,4 @@
+import CreateMensagemCommand from "@/commands/CreateMensagemCommand";
 import IMensagem from "@/models/mensagem";
 import { AxiosInstance } from "axios";
 
@@ -7,8 +8,8 @@ class MensagensService {
 		this.httpClient = httpClient;
 	}
 
-	public async create(mensagem: IMensagem): Promise<IMensagem> {
-		const response = await this.httpClient.post(`/api/mensagens`, mensagem);
+	public async create(command: CreateMensagemCommand): Promise<string> {
+		const response = await this.httpClient.post(`/api/mensagens`, command);
 		return response.data;
 	}
 
